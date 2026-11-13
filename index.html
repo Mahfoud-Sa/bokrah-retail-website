@@ -1,103 +1,813 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Download Bokra Retail, the desktop workspace for modern retail operations."
+      content="Download Bokrah Retail — The ultra-fast, offline-first desktop workspace for modern retail stores, supermarkets, and boutiques."
     />
-    <title>Bokra Retail — Desktop retail, made clear</title>
+    <meta name="theme-color" content="#102b26" />
+    <title>Bokrah Retail — Modern Desktop Retail Workspace</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%2314352f'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EB%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Bokra Retail home">
-          <span class="brand-mark" aria-hidden="true">B</span>
-          <span>Bokra <strong>Retail</strong></span>
-        </a>
-        <a class="text-link" href="https://github.com/Mahfoud-Sa/bokrahRetail/releases/latest">
-          Release notes
-        </a>
-      </nav>
+    <!-- Top Announcement Banner -->
+    <aside class="top-banner" aria-label="Announcement">
+      <span class="banner-badge" data-en="NEW" data-ar="جديد">NEW</span>
+      <span data-en="Bokrah Retail version " data-ar="إصدار بكرة ريتيل ">Bokrah Retail version </span>
+      <strong data-release-version>v3.5.0</strong>
+      <span data-en=" is officially live with seamless background auto-updates." data-ar=" متاح رسمياً مع ميزة التحديث التلقائي السلس."> is officially live with seamless background auto-updates.</span>
+      <a href="#download" data-en="Download now →" data-ar="تحميل الآن ←">Download now →</a>
+    </aside>
 
-      <section class="hero" id="top">
-        <div class="hero-copy">
-          <p class="eyebrow">DESKTOP RETAIL WORKSPACE</p>
-          <h1>Retail operations, ready for tomorrow.</h1>
-          <p class="lead">
-            Bokra Retail gives your team one calm, focused desktop workspace for products,
-            orders, customers, and insights.
+    <!-- Navigation Header -->
+    <header class="header">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="Bokrah Retail Home">
+          <div class="brand-mark" aria-hidden="true">B</div>
+          <span>Bokrah <strong>Retail</strong></span>
+        </a>
+
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="#features" data-en="Features" data-ar="المميزات">Features</a></li>
+            <li><a class="nav-link" href="#preview" data-en="Product Tour" data-ar="جولة في التطبيق">Product Tour</a></li>
+            <li><a class="nav-link" href="#offline" data-en="Offline Architecture" data-ar="العمل دون إنترنت">Offline Architecture</a></li>
+            <li><a class="nav-link" href="#download" data-en="Download" data-ar="التحميل">Download</a></li>
+            <li><a class="nav-link" href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button type="button" class="lang-btn" id="langToggle" aria-label="Switch Language">
+            العربية
+          </button>
+          <a
+            class="btn btn-emerald"
+            href="https://github.com/Mahfoud-Sa/bokrah/releases/download/v3.5.0/bokrah-setup-1.5.exe"
+            data-download-url
+            data-en="Download App"
+            data-ar="تحميل التطبيق"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download App
+          </a>
+          <button type="button" class="menu-toggle" aria-label="Open mobile menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-content">
+          <div class="hero-pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-en="DESKTOP RETAIL WORKSPACE • WINDOWS READY" data-ar="منظومة نقاط البيع والتجزئة المكتبية • جاهز لويندوز">DESKTOP RETAIL WORKSPACE • WINDOWS READY</span>
+          </div>
+
+          <h1 data-en="Retail operations, refined for modern businesses." data-ar="إدارة عمليات التجزئة والمبيعات، بأعلى سرعة وأقصى استقرار.">
+            Retail operations, refined for <span class="gradient-text">modern businesses.</span>
+          </h1>
+
+          <p class="hero-lead" data-en="Bokrah Retail gives your cashier counters and store management one calm, focused desktop workspace. Sub-second barcode checkout, multi-warehouse stock, audit-ready accounting, and seamless background updates." data-ar="تطبيق بكرة ريتيل يمنح نقاط البيع وإدارة متاجرك منصة مكتبية موحدة وفائقة السرعة. مسح فوري للباركود، إدارة مستودعات متطورة، فواتير إلكترونية ومحاسبة شاملة، وتحديثات تلقائية في الخلفية دون أي انقطاع.">
+            Bokrah Retail gives your cashier counters and store management one calm, focused desktop workspace. Sub-second barcode checkout, multi-warehouse stock, audit-ready accounting, and seamless background updates.
           </p>
-          <div class="download-panel">
-            <div>
-              <p class="download-label">AVAILABLE FOR WINDOWS</p>
-              <p class="download-detail">The first desktop build is being prepared.</p>
+
+          <!-- Primary Hero Download Card -->
+          <div class="hero-download-card">
+            <div class="download-info">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                </svg>
+                <span data-en="Available for Windows" data-ar="متاح لنظام ويندوز">Available for Windows</span>
+                <span class="version-tag" data-release-version>v3.5.0</span>
+              </h3>
+              <p>
+                <span data-en="Official 64-bit installer • File size: " data-ar="برنامج التثبيت الرسمي 64-بت • الحجم: ">Official 64-bit installer • File size: </span>
+                <strong data-release-size>~14.2 MB</strong>
+              </p>
             </div>
-            <a class="download-button" href="https://github.com/Mahfoud-Sa/bokrahRetail/releases/latest">
-              <span aria-hidden="true">↓</span>
+            <a
+              class="btn btn-emerald btn-lg"
+              href="https://github.com/Mahfoud-Sa/bokrah/releases/download/v3.5.0/bokrah-setup-1.5.exe"
+              data-download-url
+              data-en="Download for Windows"
+              data-ar="تحميل لويندوز (.exe)"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
               Download for Windows
             </a>
           </div>
-          <p class="release-note">
-            Download links will appear here automatically when the first release is published.
-          </p>
-        </div>
 
-        <div class="product-card" aria-label="Bokra Retail product preview">
-          <div class="window-bar">
-            <span></span><span></span><span></span>
-            <p>Bokra Retail</p>
+          <div class="hero-meta">
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span data-en="100% Virus & Malware Free" data-ar="آمن وخالٍ 100% من البرمجيات الضارة">100% Virus & Malware Free</span>
+            </span>
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span data-en="100% Offline-Ready" data-ar="يعمل بشكل كامل دون إنترنت">100% Offline-Ready</span>
+            </span>
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span data-en="Silent Auto-Update Service" data-ar="تحديثات ذكية في الخلفية">Silent Auto-Update Service</span>
+            </span>
           </div>
-          <div class="preview-body">
-            <aside>
-              <div class="mini-logo">B</div>
-              <span class="active">Overview</span>
-              <span>Catalog</span>
-              <span>Orders</span>
-              <span>Customers</span>
-              <span>Reports</span>
-            </aside>
-            <div class="dashboard">
-              <p class="preview-title">Good morning</p>
-              <div class="stat-grid">
-                <div><small>Today’s sales</small><b>—</b></div>
-                <div><small>Orders</small><b>—</b></div>
-                <div><small>Low stock</small><b>—</b></div>
+
+          <!-- Product Desktop Window Mockup -->
+          <div class="preview-wrapper" id="preview">
+            <div class="preview-window" aria-label="Bokrah Retail Application Window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="window-title" data-en="Bokrah Retail v3.5.0 — Flagship Store (Olaya Branch)" data-ar="بكرة ريتيل v3.5.0 — الفرع الرئيسي (فرع العليا)">
+                  Bokrah Retail v3.5.0 — Flagship Store (Olaya Branch)
+                </div>
               </div>
-              <div class="setup-card">
-                <p>Start building your store</p>
-                <span>Add your first product</span>
-                <button type="button">Add product</button>
+
+              <div class="mock-app">
+                <!-- Sidebar -->
+                <aside class="mock-sidebar">
+                  <div>
+                    <div class="mock-brand">
+                      <div class="mock-brand-icon">B</div>
+                      <span>Bokrah Retail</span>
+                    </div>
+                    <ul class="mock-menu">
+                      <li class="active">
+                        <span>⚡</span>
+                        <span data-en="Point of Sale (POS)" data-ar="نقطة البيع (POS)">Point of Sale (POS)</span>
+                      </li>
+                      <li>
+                        <span>📦</span>
+                        <span data-en="Product Catalog" data-ar="كتالوج المنتجات">Product Catalog</span>
+                      </li>
+                      <li>
+                        <span>🏷️</span>
+                        <span data-en="Categories & Units" data-ar="التصنيفات والوحدات">Categories & Units</span>
+                      </li>
+                      <li>
+                        <span>🏢</span>
+                        <span data-en="Warehouses & Stock" data-ar="المستودعات والمخزون">Warehouses & Stock</span>
+                      </li>
+                      <li>
+                        <span>🧾</span>
+                        <span data-en="Invoices & Returns" data-ar="الفواتير والمرتجعات">Invoices & Returns</span>
+                      </li>
+                      <li>
+                        <span>📊</span>
+                        <span data-en="General Ledger" data-ar="دفتر الأستاذ والمحاسبة">General Ledger</span>
+                      </li>
+                      <li>
+                        <span>⚙️</span>
+                        <span data-en="Settings" data-ar="الإعدادات">Settings</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mock-user">
+                    <div class="mock-avatar">A</div>
+                    <div>
+                      <strong data-en="Abdullah Salem" data-ar="عبدالله سالم">Abdullah Salem</strong>
+                      <div style="font-size: 10px; color: #a3c2b8;" data-en="Store Manager" data-ar="مدير المتجر">Store Manager</div>
+                    </div>
+                  </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <div class="mock-main">
+                  <!-- Mock Topbar -->
+                  <div class="mock-topbar">
+                    <div class="mock-search">
+                      <span>🔍</span>
+                      <span data-en="Scan barcode or press F2 to search catalog..." data-ar="امسح الباركود أو اضغط F2 للبحث...">Scan barcode or press F2 to search catalog...</span>
+                    </div>
+                    <div class="mock-badges">
+                      <span class="mock-status-pill">
+                        <span style="display:inline-block; width:6px; height:6px; background:#10b981; border-radius:50%;"></span>
+                        <span data-en="Offline Ready & Synced" data-ar="جاهز دون إنترنت ومتزامن">Offline Ready & Synced</span>
+                      </span>
+                      <span class="mock-update-badge">
+                        <span>🔄</span>
+                        <span data-en="Auto-Update: Up to date" data-ar="التحديث التلقائي: محدث">Auto-Update: Up to date</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Mock KPI Cards -->
+                  <div class="mock-stats">
+                    <div class="mock-stat-card">
+                      <small data-en="Today's Sales" data-ar="مبيعات اليوم">Today's Sales</small>
+                      <strong>ر.س 24,850.00</strong>
+                      <span data-en="+18.4% vs yesterday" data-ar="+18.4% مقارنة بأمس">+18.4% vs yesterday</span>
+                    </div>
+                    <div class="mock-stat-card">
+                      <small data-en="Orders Completed" data-ar="الطلبات المكتملة">Orders Completed</small>
+                      <strong>184</strong>
+                      <span data-en="Zero pending" data-ar="لا توجد معلقة">Zero pending</span>
+                    </div>
+                    <div class="mock-stat-card">
+                      <small data-en="Active Catalog" data-ar="المنتجات النشطة">Active Catalog</small>
+                      <strong>2,430</strong>
+                      <span data-en="All barcodes mapped" data-ar="كل الباركود مسجل">All barcodes mapped</span>
+                    </div>
+                    <div class="mock-stat-card">
+                      <small data-en="Stock Health" data-ar="سلامة المخزون">Stock Health</small>
+                      <strong style="color: #10b981;">99.2%</strong>
+                      <span data-en="2 items low stock" data-ar="2 منتجات قاربت النفاد">2 items low stock</span>
+                    </div>
+                  </div>
+
+                  <!-- Mock POS Catalog & Cart -->
+                  <div class="mock-pos-split">
+                    <div class="mock-catalog-grid">
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">☕</div>
+                        <div class="mock-item-title" data-en="Signature Espresso Blend" data-ar="بن إسبريسو فاخر">Signature Espresso Blend</div>
+                        <div class="mock-item-barcode">628100234891</div>
+                        <div class="mock-item-price">ر.س 42.00</div>
+                      </div>
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">🥐</div>
+                        <div class="mock-item-title" data-en="French Butter Croissant" data-ar="كرواسون زبدة فرنسي">French Butter Croissant</div>
+                        <div class="mock-item-barcode">628100889123</div>
+                        <div class="mock-item-price">ر.س 14.50</div>
+                      </div>
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">🫒</div>
+                        <div class="mock-item-title" data-en="Cold-Pressed Olive Oil 1L" data-ar="زيت زيتون بكر ممتاز 1 لتر">Cold-Pressed Olive Oil 1L</div>
+                        <div class="mock-item-barcode">628100551239</div>
+                        <div class="mock-item-price">ر.س 68.00</div>
+                      </div>
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">🥤</div>
+                        <div class="mock-item-title" data-en="Fresh Pressed Orange Juice" data-ar="عصير برتقال طازج">Fresh Pressed Orange Juice</div>
+                        <div class="mock-item-barcode">628100119932</div>
+                        <div class="mock-item-price">ر.س 18.00</div>
+                      </div>
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">🍯</div>
+                        <div class="mock-item-title" data-en="Wildflower Sidr Honey 500g" data-ar="عسل سدر طبيعي 500 جم">Wildflower Sidr Honey 500g</div>
+                        <div class="mock-item-barcode">628100994411</div>
+                        <div class="mock-item-price">ر.س 120.00</div>
+                      </div>
+                      <div class="mock-item-card">
+                        <div class="mock-item-thumb">🥖</div>
+                        <div class="mock-item-title" data-en="Artisan Sourdough Loaf" data-ar="خبز ساوردو ريفي">Artisan Sourdough Loaf</div>
+                        <div class="mock-item-barcode">628100772211</div>
+                        <div class="mock-item-price">ر.س 22.00</div>
+                      </div>
+                    </div>
+
+                    <!-- Cart -->
+                    <div class="mock-cart">
+                      <div>
+                        <div class="mock-cart-title" data-en="Active Checkout (Ticket #185)" data-ar="الفاتورة الحالية (تذكرة #185)">Active Checkout (Ticket #185)</div>
+                        <div class="mock-cart-items">
+                          <div class="mock-cart-row">
+                            <span data-en="2x Espresso Blend" data-ar="2x بن إسبريسو">2x Espresso Blend</span>
+                            <strong>84.00</strong>
+                          </div>
+                          <div class="mock-cart-row">
+                            <span data-en="1x Sidr Honey 500g" data-ar="1x عسل سدر">1x Sidr Honey 500g</span>
+                            <strong>120.00</strong>
+                          </div>
+                          <div class="mock-cart-row">
+                            <span data-en="3x Butter Croissant" data-ar="3x كرواسون">3x Butter Croissant</span>
+                            <strong>43.50</strong>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mock-cart-total">
+                        <div class="mock-cart-row" style="font-size: 11px; margin-bottom: 4px;">
+                          <span data-en="Subtotal" data-ar="المجموع قبل الضريبة">Subtotal</span>
+                          <span>215.22</span>
+                        </div>
+                        <div class="mock-cart-row" style="font-size: 11px; margin-bottom: 6px;">
+                          <span data-en="VAT (15%)" data-ar="ضريبة القيمة المضافة (15%)">VAT (15%)</span>
+                          <span>32.28</span>
+                        </div>
+                        <div>
+                          <span data-en="Total (SAR)" data-ar="الإجمالي النهائي (ر.س)">Total (SAR)</span>
+                          <span style="color: #10b981;">247.50</span>
+                        </div>
+                        <button type="button" class="mock-checkout-btn" data-en="⚡ Pay with Mada / Cash [F12]" data-ar="⚡ دفع مدى / نقداً [F12]">
+                          ⚡ Pay with Mada / Cash [F12]
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="features" aria-label="Bokra Retail features">
-        <article>
-          <span class="feature-number">01</span>
-          <h2>Designed for focus</h2>
-          <p>Clear desktop views help your team move through everyday retail work without noise.</p>
-        </article>
-        <article>
-          <span class="feature-number">02</span>
-          <h2>Built to grow</h2>
-          <p>Begin with your catalog and add order, customer, and reporting workflows as you grow.</p>
-        </article>
-        <article>
-          <span class="feature-number">03</span>
-          <h2>Made for your team</h2>
-          <p>Thoughtful accessibility and bilingual foundations support a wider range of people.</p>
-        </article>
+      <!-- Features Section -->
+      <section class="features-section" id="features">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow" data-en="BUILT FOR MODERN RETAIL" data-ar="مبني لتجارة التجزئة العصرية">BUILT FOR MODERN RETAIL</p>
+            <h2 class="section-title" data-en="Everything your store needs to sell fast and scale smoothly." data-ar="كل ما يحتاجه متجرك للبيع بسرعة والتوسع بثقة.">
+              Everything your store needs to sell fast and scale smoothly.
+            </h2>
+            <p class="section-desc" data-en="From corner groceries and bakeries to multi-branch retail chains, Bokrah Retail provides an enterprise-grade experience without complexity." data-ar="من المتاجر الصغيرة والمخابز إلى سلاسل التجزئة متعددة الفروع، يقدم بكرة ريتيل تجربة مؤسسية قوية دون أي تعقيد.">
+              From corner groceries and bakeries to multi-branch retail chains, Bokrah Retail provides an enterprise-grade experience without complexity.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <!-- Feature 1: Auto-Update -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                </svg>
+              </div>
+              <h3 data-en="Seamless Background Auto-Updates" data-ar="تحديثات تلقائية ذكية في الخلفية">Seamless Background Auto-Updates</h3>
+              <p data-en="Never worry about manual patches or broken versions. Bokrah automatically checks official GitHub releases, notifies cashiers non-intrusively, and provides one-click upgrade." data-ar="لا داعي للقلق بشأن تحديثات البرامج اليدوية. يتحقق التطبيق تلقائياً من الإصدارات الرسمية في الخلفية ويعرض إشعاراً سلساً مع الترقية بنقرة واحدة.">
+                Never worry about manual patches or broken versions. Bokrah automatically checks official GitHub releases, notifies cashiers non-intrusively, and provides one-click upgrade.
+              </p>
+              <span class="feature-tag" data-en="Continuous delivery" data-ar="تحديث مستمر">Continuous delivery</span>
+            </article>
+
+            <!-- Feature 2: Offline-First -->
+            <article class="feature-card" id="offline">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </div>
+              <h3 data-en="100% Offline-First Architecture" data-ar="بنية برمجية تعمل دون إنترنت">100% Offline-First Architecture</h3>
+              <p data-en="Internet outages should never stop your checkout counter. Bokrah stores all catalogs, receipts, and customer records locally and syncs automatically when reconnected." data-ar="انقطاع الإنترنت لن يوقف كاشير متجرك أبداً. تُخزّن جميع البيانات محلياً مع سرعة استجابة فورية ومزامنة سحابية تلقائية فور عودة الاتصال.">
+                Internet outages should never stop your checkout counter. Bokrah stores all catalogs, receipts, and customer records locally and syncs automatically when reconnected.
+              </p>
+              <span class="feature-tag" data-en="Zero downtime" data-ar="انعدام التوقف">Zero downtime</span>
+            </article>
+
+            <!-- Feature 3: Sub-second Barcode -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"></path>
+                </svg>
+              </div>
+              <h3 data-en="Lightning Barcode Scanning" data-ar="مسح باركود فائق السرعة">Lightning Barcode Scanning</h3>
+              <p data-en="Engineered for high-volume rush hours. Compatible with USB and Bluetooth 1D/2D handheld barcode scanners, scale barcodes, and thermal receipt printers." data-ar="مصمم لتحمل أوقات الذروة وازدحام العملاء. متوافق مع كافة أجهزة مسح الباركود السلكية واللاسلكية وموازين الباركود وطابعات الإيصالات.">
+                Engineered for high-volume rush hours. Compatible with USB and Bluetooth 1D/2D handheld barcode scanners, scale barcodes, and thermal receipt printers.
+              </p>
+              <span class="feature-tag" data-en="Sub-second speed" data-ar="سرعة فائقة">Sub-second speed</span>
+            </article>
+
+            <!-- Feature 4: Inventory & Warehouses -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+              </div>
+              <h3 data-en="Multi-Warehouse & Stock Control" data-ar="مستودعات متعددة ورقابة المخزون">Multi-Warehouse & Stock Control</h3>
+              <p data-en="Track inventory across store shelves, stock rooms, and regional depots. Automated low-stock alerts, purchase receipts, inventory counts, and expiry dates." data-ar="تتبع المخزون بدقة بين الأرفف ومستودعات التخزين. تنبيهات تلقائية عند اقتراب نفاد الكمية، جرد دوري، وإدارة تواريخ الصلاحية والدُفعات.">
+                Track inventory across store shelves, stock rooms, and regional depots. Automated low-stock alerts, purchase receipts, inventory counts, and expiry dates.
+              </p>
+              <span class="feature-tag" data-en="Accurate stock" data-ar="مخزون دقيق">Accurate stock</span>
+            </article>
+
+            <!-- Feature 5: Accounting & Tax -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <h3 data-en="Audit-Ready Double-Entry Accounting" data-ar="محاسبة دقيقة وفواتير ضريبية">Audit-Ready Double-Entry Accounting</h3>
+              <p data-en="Integrated general ledger, journal entries, profit & loss, and automated VAT / Tax calculations. Generates ZATCA-compliant QR codes on electronic invoices." data-ar="دفتر أستاذ عام متكامل، قيود يومية آلية، تقارير أرباح وخسائر، وحساب تلقائي لضريبة القيمة المضافة مع تشفير رمز الاستجابة السريعة (QR Code).">
+                Integrated general ledger, journal entries, profit & loss, and automated VAT / Tax calculations. Generates ZATCA-compliant QR codes on electronic invoices.
+              </p>
+              <span class="feature-tag" data-en="Tax compliant" data-ar="متوافق ضريبياً">Tax compliant</span>
+            </article>
+
+            <!-- Feature 6: Native Bilingual -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              <h3 data-en="Native Arabic & English (RTL First)" data-ar="ثنائي اللغة عربي وإنجليزي أصيل">Native Arabic & English (RTL First)</h3>
+              <p data-en="Crafted with pure right-to-left layout perfection, Arabic typography, bilingual invoice receipts, and currency formatting for Saudi Arabia and international retail." data-ar="مصمم بعناية فائقة ليدعم اللغة العربية من اليمين إلى اليسار بشكل طبيعي، مع طباعة إيصالات ثنائية اللغة وتنسيق الأرقام والعملات المحلية.">
+                Crafted with pure right-to-left layout perfection, Arabic typography, bilingual invoice receipts, and currency formatting for Saudi Arabia and international retail.
+              </p>
+              <span class="feature-tag" data-en="Full RTL support" data-ar="دعم كامل للعربية">Full RTL support</span>
+            </article>
+          </div>
+
+          <!-- Highlight Banner -->
+          <div class="highlight-banner">
+            <div class="highlight-content">
+              <h3 data-en="Zero cloud latency. Total data ownership." data-ar="سرعة استجابة فورية. ملكية كاملة لبياناتك.">Zero cloud latency. Total data ownership.</h3>
+              <p data-en="Cloud-only POS systems slow down when your store needs them most. Bokrah executes transactions at local native speeds with an embedded database, ensuring you never miss a sale." data-ar="الأنظمة السحابية البحتة تبطئ عند ازدحام المتجر وتتوقف مع انقطاع الشبكة. بكرة ريتيل يعمل محلياً بسرعة البرمجيات المكتبية مع حفظ آمن للبيانات.">
+                Cloud-only POS systems slow down when your store needs them most. Bokrah executes transactions at local native speeds with an embedded database, ensuring you never miss a sale.
+              </p>
+              <a class="btn btn-emerald" href="#download" data-en="Get Started for Free" data-ar="ابدأ الآن مجاناً">Get Started for Free</a>
+            </div>
+            <div class="highlight-stats">
+              <div class="stat-box">
+                <strong>&lt; 50ms</strong>
+                <span data-en="Barcode checkout latency" data-ar="زمن معالجة قراءة الباركود">Barcode checkout latency</span>
+              </div>
+              <div class="stat-box">
+                <strong>100%</strong>
+                <span data-en="Offline continuous runtime" data-ar="استمرارية تامة دون اتصال">Offline continuous runtime</span>
+              </div>
+              <div class="stat-box">
+                <strong>0</strong>
+                <span data-en="External server requirements" data-ar="متطلبات خوادم خارجية">External server requirements</span>
+              </div>
+              <div class="stat-box">
+                <strong>1-Click</strong>
+                <span data-en="Automated update handoff" data-ar="تحديثات بنقرة واحدة">Automated update handoff</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Steps Section -->
+      <section class="steps-section">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow" data-en="SIMPLE 3-STEP SETUP" data-ar="إعداد سهل في 3 خطوات">SIMPLE 3-STEP SETUP</p>
+            <h2 class="section-title" data-en="Up and running in less than 3 minutes." data-ar="جاهز للعمل في أقل من 3 دقائق.">
+              Up and running in less than 3 minutes.
+            </h2>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <h3 data-en="Download & Install" data-ar="التحميل والتثبيت">Download & Install</h3>
+              <p data-en="Download the lightweight Windows installer (.exe). Install it in seconds without setting up complex web servers or database drivers." data-ar="حمّل ملف التثبيت السريع لويندوز (.exe). ثبته في ثوانٍ دون الحاجة لإعداد خوادم أو قواعد بيانات معقدة.">
+                Download the lightweight Windows installer (.exe). Install it in seconds without setting up complex web servers or database drivers.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <h3 data-en="Import Your Catalog" data-ar="استيراد المنتجات">Import Your Catalog</h3>
+              <p data-en="Add your products, categories, and barcodes via simple Excel/CSV import or scan items directly with your handheld scanner." data-ar="أضف منتجاتك وتصنيفاتها وأسعارها عبر ملف Excel أو امسح الباركود مباشرة من جهاز الكاشير.">
+                Add your products, categories, and barcodes via simple Excel/CSV import or scan items directly with your handheld scanner.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <h3 data-en="Start Selling & Growing" data-ar="ابدأ البيع والنمو">Start Selling & Growing</h3>
+              <p data-en="Ring up customers with speed, print invoices, manage multi-user cashier roles, and track daily financial reconciliation." data-ar="ابدأ البيع لعملائك فوراً، اطبع الفواتير، وتحكم بصلاحيات الكاشير وتابع أرباحك لحظة بلحظة.">
+                Ring up customers with speed, print invoices, manage multi-user cashier roles, and track daily financial reconciliation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dedicated Download Center Section -->
+      <section class="download-section" id="download">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow" data-en="OFFICIAL DOWNLOADS" data-ar="التحميل الرسمي">OFFICIAL DOWNLOADS</p>
+            <h2 class="section-title" data-en="Download Bokrah Retail for your store." data-ar="حمّل بكرة ريتيل لمتاجرك الآن.">
+              Download Bokrah Retail for your store.
+            </h2>
+            <p class="section-desc" data-en="Choose the package that fits your setup. Official desktop releases include built-in automatic update verification." data-ar="اختر الحزمة المناسبة لأجهزتك. تتضمن الإصدارات الرسمية خدمة التحديث التلقائي المدمجة.">
+              Choose the package that fits your setup. Official desktop releases include built-in automatic update verification.
+            </p>
+          </div>
+
+          <div class="download-grid">
+            <!-- Primary Download Card -->
+            <div class="download-primary-card">
+              <span class="recommended-tag" data-en="RECOMMENDED" data-ar="موصى به">RECOMMENDED</span>
+              <div class="download-primary-header">
+                <h3 data-en="Windows 64-bit Installer" data-ar="برنامج التثبيت لنظام ويندوز 64-بت">Windows 64-bit Installer</h3>
+                <p data-en="Complete desktop setup with automatic shortcut creation and background auto-update manager." data-ar="تثبيت كامل للمكتب مع اختصارات سطح المكتب وميزة التحقق من التحديثات تلقائياً.">
+                  Complete desktop setup with automatic shortcut creation and background auto-update manager.
+                </p>
+              </div>
+
+              <ul class="spec-list">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span data-en="Version: " data-ar="الإصدار: ">Version: </span><strong data-release-version>v3.5.0</strong>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span data-en="File Size: " data-ar="حجم الملف: ">File Size: </span><strong data-release-size>~14.2 MB</strong>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span data-en="System: Windows 10 / Windows 11 (64-bit)" data-ar="النظام: ويندوز 10 / ويندوز 11 (64-بت)">System: Windows 10 / Windows 11 (64-bit)</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span data-en="Built-in silent auto-update checker" data-ar="تحديثات ذكية مدمجة في الخلفية">Built-in silent auto-update checker</span>
+                </li>
+              </ul>
+
+              <div style="margin-top: 24px;">
+                <a
+                  class="btn btn-emerald btn-lg"
+                  style="width: 100%; justify-content: center;"
+                  href="https://github.com/Mahfoud-Sa/bokrah/releases/download/v3.5.0/bokrah-setup-1.5.exe"
+                  data-download-url
+                  data-en="Download bokrah-setup.exe"
+                  data-ar="تحميل برنامج التثبيت bokrah-setup.exe"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download bokrah-setup.exe
+                </a>
+                <div style="text-align: center; margin-top: 12px; font-size: 13px;">
+                  <a
+                    href="https://github.com/Mahfoud-Sa/bokrah/releases"
+                    data-release-notes
+                    style="color: var(--forest-700); text-decoration: underline;"
+                    data-en="View release notes & changelog on GitHub →"
+                    data-ar="عرض ملاحظات الإصدار وسجل التغييرات على GitHub ←"
+                  >
+                    View release notes & changelog on GitHub →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary Downloads Column -->
+            <div class="download-secondary-column">
+              <!-- Portable Edition -->
+              <div class="secondary-card">
+                <div class="secondary-info">
+                  <h4 data-en="Windows Portable Edition (.zip)" data-ar="نسخة ويندوز المحمولة (.zip)">Windows Portable Edition (.zip)</h4>
+                  <p data-en="Run directly without installation from a USB drive or local folder." data-ar="تشغيل مباشر دون تثبيت من فلاش ميموري أو مجلد محلي.">
+                    Run directly without installation from a USB drive or local folder.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-outline"
+                  href="https://github.com/Mahfoud-Sa/bokrah/releases"
+                  data-release-notes
+                  data-en="Download .zip"
+                  data-ar="تحميل .zip"
+                >
+                  Download .zip
+                </a>
+              </div>
+
+              <!-- Android Mobile Edition -->
+              <div class="secondary-card">
+                <div class="secondary-info">
+                  <h4 data-en="Android APK (Handheld & Tablet)" data-ar="تطبيق أندرويد (للأجهزة المحمولة)">Android APK (Handheld & Tablet)</h4>
+                  <p data-en="Stock taking, mobile barcode auditing, and handheld POS." data-ar="للجرد المتنقل، مراجعة الأسعار، ونقاط البيع المحمولة.">
+                    Stock taking, mobile barcode auditing, and handheld POS.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-outline"
+                  href="https://github.com/Mahfoud-Sa/bokrah/releases"
+                  data-release-notes
+                  data-en="Releases"
+                  data-ar="الإصدارات"
+                >
+                  Releases
+                </a>
+              </div>
+
+              <!-- GitHub Repository -->
+              <div class="secondary-card">
+                <div class="secondary-info">
+                  <h4 data-en="Open Source Repository" data-ar="المستودع مفتوح المصدر">Open Source Repository</h4>
+                  <p data-en="Inspect the Flutter codebase, compile from source, or report issues." data-ar="استكشف كود فلاتر المصدري أو ساهم في التطوير.">
+                    Inspect the Flutter codebase, compile from source, or report issues.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-outline"
+                  href="https://github.com/Mahfoud-Sa/bokrahRetail"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-en="GitHub"
+                  data-ar="جيت هب"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Requirements Card -->
+          <div class="requirements-card">
+            <h4 data-en="System Requirements" data-ar="متطلبات النظام">System Requirements</h4>
+            <div class="req-grid">
+              <div class="req-item">
+                <small data-en="Operating System" data-ar="نظام التشغيل">Operating System</small>
+                <span>Windows 10 / 11 (64-bit)</span>
+              </div>
+              <div class="req-item">
+                <small data-en="Processor" data-ar="المعالج">Processor</small>
+                <span>Intel / AMD x64 1.8 GHz+</span>
+              </div>
+              <div class="req-item">
+                <small data-en="Memory (RAM)" data-ar="الذاكرة العشوائية">Memory (RAM)</small>
+                <span>4 GB minimum (8 GB recommended)</span>
+              </div>
+              <div class="req-item">
+                <small data-en="Storage Space" data-ar="المساحة التخزينية">Storage Space</small>
+                <span>150 MB available space</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq-section" id="faq">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow" data-en="FREQUENTLY ASKED QUESTIONS" data-ar="الأسئلة الشائعة">FREQUENTLY ASKED QUESTIONS</p>
+            <h2 class="section-title" data-en="Got questions? We've got answers." data-ar="هل لديك استفسارات؟ إليك الإجابات.">
+              Got questions? We've got answers.
+            </h2>
+          </div>
+
+          <div class="faq-list">
+            <!-- FAQ 1: Auto-update -->
+            <div class="faq-item active">
+              <button type="button" class="faq-question">
+                <span data-en="How does the auto-update feature work in Bokrah Retail?" data-ar="كيف تعمل ميزة التحديث التلقائي في بكرة ريتيل؟">How does the auto-update feature work in Bokrah Retail?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p data-en="When Bokrah Retail launches, it performs a silent, non-blocking check against official GitHub releases. If a newer stable version is available, a subtle notification appears with release highlights. You can click 'Download Update' to open the verified installer in your browser, or choose 'Later' or 'Skip This Version' without interrupting your active sales." data-ar="عند فتح التطبيق، يقوم بفحص تلقائي صامت وسريع في الخلفية مقارنة بالإصدارات الرسمية على GitHub. إذا توفر إصدار أحدث، يظهر إشعار هادئ بمميزات التحديث. يمكنك النقر على 'تحميل التحديث' ليتم تنزيل المثبت الرسمي، أو اختيار 'لاحقاً' أو 'تخطي' دون أي مقاطعة لعمليات البيع.">
+                  When Bokrah Retail launches, it performs a silent, non-blocking check against official GitHub releases. If a newer stable version is available, a subtle notification appears with release highlights. You can click 'Download Update' to open the verified installer in your browser, or choose 'Later' or 'Skip This Version' without interrupting your active sales.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2: Offline -->
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span data-en="Does Bokrah Retail require a constant internet connection?" data-ar="هل يحتاج التطبيق إلى اتصال دائم بالإنترنت؟">Does Bokrah Retail require a constant internet connection?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p data-en="No. Bokrah Retail is completely offline-first. Your entire product catalog, pricing, barcode scanning, and invoice printing operate at native desktop speed without requiring internet connectivity. When internet is available, cloud sync occurs automatically in the background." data-ar="لا، بكرة ريتيل يعمل بشكل كامل دون إنترنت (Offline-First). جميع المنتجات والباركود والفواتير تعمل بسرعة محلية فائقة دون الحاجة للشبكة. وعند توفر الإنترنت تتم المزامنة السحابية تلقائياً في الخلفية.">
+                  No. Bokrah Retail is completely offline-first. Your entire product catalog, pricing, barcode scanning, and invoice printing operate at native desktop speed without requiring internet connectivity. When internet is available, cloud sync occurs automatically in the background.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 3: Hardware -->
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span data-en="What barcode scanners and receipt printers are supported?" data-ar="ما هي طابعات الإيصالات وأجهزة الباركود المدعومة؟">What barcode scanners and receipt printers are supported?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p data-en="Bokrah Retail supports any standard USB or Bluetooth HID barcode scanner (1D and 2D/QR code), electronic weighing scales with barcode generation, standard 80mm and 58mm ESC/POS thermal receipt printers, and automatic cash drawers." data-ar="يدعم بكرة ريتيل جميع أجهزة قراءة الباركود السلكية واللاسلكية (أحادية وثنائية الأبعاد QR)، موازين الباركود، طابعات الإيصالات الحرارية القياسية 80 مم و 58 مم، وأدراج النقدية الإلكترونية.">
+                  Bokrah Retail supports any standard USB or Bluetooth HID barcode scanner (1D and 2D/QR code), electronic weighing scales with barcode generation, standard 80mm and 58mm ESC/POS thermal receipt printers, and automatic cash drawers.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 4: ZATCA & Taxes -->
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span data-en="Does Bokrah Retail support tax invoices and VAT regulations?" data-ar="هل يدعم النظام الفواتير الضريبية وضريبة القيمة المضافة؟">Does Bokrah Retail support tax invoices and VAT regulations?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p data-en="Yes. Bokrah Retail complies with regional retail tax standards, including automated 15% VAT calculation, encrypted TLV QR codes compatible with ZATCA Phase 1 & 2 requirements, tax breakdown lines, and simplified tax invoice receipts." data-ar="نعم، يدعم بكرة ريتيل حساب ضريبة القيمة المضافة بدقة، وتوليد رموز الاستجابة السريعة المشفرة (QR Code) المتوافقة مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)، مع تفقيط المبالغ وطباعة فواتير ضريبية مبسطة.">
+                  Yes. Bokrah Retail complies with regional retail tax standards, including automated 15% VAT calculation, encrypted TLV QR codes compatible with ZATCA Phase 1 & 2 requirements, tax breakdown lines, and simplified tax invoice receipts.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 5: Free & Open -->
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span data-en="Is Bokrah Retail free to download and use?" data-ar="هل يمكن تحميل واستخدام بكرة ريتيل مجاناً؟">Is Bokrah Retail free to download and use?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p data-en="Yes! Bokrah Retail is open source. You can download the desktop build freely from GitHub, deploy it across your store cashier machines, and inspect or customize the source code." data-ar="نعم! تطبيق بكرة ريتيل مفتوح المصدر ومجاني للتحميل. يمكنك تنزيل النسخة المجمعة ونشرها على أجهزة الكاشير في متاجرك دون أي رسوم ترخيص.">
+                  Yes! Bokrah Retail is open source. You can download the desktop build freely from GitHub, deploy it across your store cashier machines, and inspect or customize the source code.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA Banner -->
+      <section class="bottom-cta">
+        <div class="container">
+          <h2 data-en="Ready to modernize your retail store?" data-ar="جاهز لتطوير إدارة متجرك اليوم؟">Ready to modernize your retail store?</h2>
+          <p data-en="Download Bokrah Retail today. Zero bloat, instant setup, and built for speed." data-ar="حمّل بكرة ريتيل اليوم. تثبيت فوري، أداء سريع، وبساطة متناهية.">
+            Download Bokrah Retail today. Zero bloat, instant setup, and built for speed.
+          </p>
+          <div class="bottom-cta-actions">
+            <a
+              class="btn btn-emerald btn-lg"
+              href="https://github.com/Mahfoud-Sa/bokrah/releases/download/v3.5.0/bokrah-setup-1.5.exe"
+              data-download-url
+              data-en="Download for Windows (.exe)"
+              data-ar="تحميل لويندوز (.exe)"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download for Windows (.exe)
+            </a>
+            <a
+              class="btn btn-outline btn-lg"
+              style="color: #fff; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);"
+              href="https://github.com/Mahfoud-Sa/bokrahRetail"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-en="View Source Code"
+              data-ar="عرض الكود المصدري"
+            >
+              View Source Code
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer>
-      <span>© 2026 Bokra Retail</span>
-      <a href="https://github.com/Mahfoud-Sa/bokrahRetail">View project</a>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="brand-mark" style="width: 32px; height: 32px; font-size: 16px;" aria-hidden="true">B</div>
+            <span>Bokrah <strong>Retail</strong></span>
+          </div>
+
+          <ul class="footer-links">
+            <li><a href="#features" data-en="Features" data-ar="المميزات">Features</a></li>
+            <li><a href="#download" data-en="Download" data-ar="التحميل">Download</a></li>
+            <li><a href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+            <li><a href="https://github.com/Mahfoud-Sa/bokrah/releases" data-release-notes data-en="Release Notes" data-ar="ملاحظات الإصدار">Release Notes</a></li>
+            <li><a href="https://github.com/Mahfoud-Sa/bokrahRetail" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Bokrah Retail. Built with precision for modern commerce.</p>
+          <p data-en="Bilingual English & Arabic • Windows Desktop Application" data-ar="ثنائي اللغة • تطبيق مكتبي لنظام ويندوز">
+            Bilingual English & Arabic • Windows Desktop Application
+          </p>
+        </div>
+      </div>
     </footer>
+
+    <script src="app.js"></script>
   </body>
 </html>
