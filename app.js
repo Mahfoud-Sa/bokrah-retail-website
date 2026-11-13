@@ -89,16 +89,29 @@ async function fetchLatestGithubRelease() {
   const version = releaseData.tag_name || 'v3.5.0';
   const htmlUrl = releaseData.html_url || 'https://github.com/Mahfoud-Sa/bokrah/releases';
   
-  // Find Windows installer
+  // Find Windows installer matching bokrah-retailer-setup{tag_release}.exe
   let installerUrl = null;
   let installerSize = null;
 
   if (Array.isArray(releaseData.assets)) {
-    // Prefer .exe with setup or app name
-    const exeAsset = releaseData.assets.find(a => {
+    // 1. Look for asset specifically matching bokrah-retailer-setup
+    let exeAsset = releaseData.assets.find(a => {
       const name = (a.name || '').toLowerCase();
-      return name.endsWith('.exe');
+      return name.includes('bokrah-retailer-setup') && name.endsWith('.exe');
     });
+
+    // 2. Or any retailer setup .exe
+    if (!exeAsset) {
+      exeAsset = releaseData.assets.find(a => {
+        const name = (a.name || '').toLowerCase();
+        return (name.includes('setup') || name.includes('retail')) && name.endsWith('.exe');
+      });
+    }
+
+    // 3. Fallback to any .exe asset
+    if (!exeAsset) {
+      exeAsset = releaseData.assets.find(a => (a.name || '').toLowerCase().endsWith('.exe'));
+    }
 
     if (exeAsset) {
       installerUrl = exeAsset.browser_download_url;
@@ -106,6 +119,11 @@ async function fetchLatestGithubRelease() {
         installerSize = (exeAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
       }
     }
+  }
+
+  // Fallback to the standardized binary naming format if asset list was empty
+  if (!installerUrl) {
+    installerUrl = `https://github.com/Mahfoud-Sa/bokrah/releases/download/${version}/bokrah-retailer-setup-${version}.exe`;
   }
 
   // Update DOM elements
@@ -117,6 +135,12 @@ async function fetchLatestGithubRelease() {
     document.querySelectorAll('[data-download-url]').forEach(el => {
       el.setAttribute('href', installerUrl);
     });
+  }
+
+  // Dynamic button label updating
+  const btnLabel = document.querySelector('[data-download-btn-label]');
+  if (btnLabel) {
+    btnLabel.textContent = `Download bokrah-retailer-setup-${version}.exe`;
   }
 
   if (installerSize) {
