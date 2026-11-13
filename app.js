@@ -1,11 +1,18 @@
-// Bokrah Retail Landing Page Client Scripts
+// Bokrah Retail Landing Page & Releases Client Scripts
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initFaqAccordion();
   initLanguageToggle();
   initMobileMenu();
   fetchLatestGithubRelease();
+  if (document.getElementById('releasesList')) {
+    fetchAllGithubReleases();
+  }
 });
+
+// Primary repository for Bokrah Retail desktop application
+const PRIMARY_REPO = 'Mahfoud-Sa/bokrahRetail';
+const FALLBACK_REPO = 'Mahfoud-Sa/bokrah';
 
 // Navbar background blur on scroll
 function initNavbarScroll() {
@@ -61,9 +68,56 @@ function initMobileMenu() {
   });
 }
 
-// GitHub Releases Dynamic Fetching
+// Helper to find the best Windows installer asset
+function findWindowsInstallerAsset(assets) {
+  if (!Array.isArray(assets) || assets.length === 0) return null;
+
+  // 1. Look for specific bokrah retail installer .exe
+  let exeAsset = assets.find(a => {
+    const name = (a.name || '').toLowerCase();
+    return (name.includes('bokrah-setup') ||
+            name.includes('bokrah-retailer-setup') ||
+            name.includes('bokrah-retail-setup')) && name.endsWith('.exe');
+  });
+
+  // 2. Look for any installer/setup .exe
+  if (!exeAsset) {
+    exeAsset = assets.find(a => {
+      const name = (a.name || '').toLowerCase();
+      return (name.includes('setup') || name.includes('retail') || name.includes('install')) && name.endsWith('.exe');
+    });
+  }
+
+  // 3. Fallback to any .exe asset
+  if (!exeAsset) {
+    exeAsset = assets.find(a => (a.name || '').toLowerCase().endsWith('.exe'));
+  }
+
+  return exeAsset;
+}
+
+// Helper to format bytes into readable MB
+function formatFileSize(bytes) {
+  if (!bytes || isNaN(bytes)) return '~13.5 MB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+// Helper to format ISO date
+function formatReleaseDate(isoString, lang = 'en') {
+  if (!isoString) return '';
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return isoString;
+
+  return date.toLocaleDateString(lang === 'ar' ? 'ar-SA' : 'en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+}
+
+// GitHub Releases Dynamic Fetching for Landing Page (Latest)
 async function fetchLatestGithubRelease() {
-  const repos = ['Mahfoud-Sa/bokrah', 'Mahfoud-Sa/bokrahRetail'];
+  const repos = [PRIMARY_REPO, FALLBACK_REPO];
   let releaseData = null;
 
   for (const repo of repos) {
@@ -86,47 +140,28 @@ async function fetchLatestGithubRelease() {
 
   if (!releaseData) return;
 
-  const version = releaseData.tag_name || 'v3.5.0';
-  const htmlUrl = releaseData.html_url || 'https://github.com/Mahfoud-Sa/bokrah/releases';
+  const version = releaseData.tag_name || 'v3.5.1';
+  const htmlUrl = releaseData.html_url || `https://github.com/${PRIMARY_REPO}/releases`;
   
-  // Find Windows installer matching bokrah-retailer-setup{tag_release}.exe
   let installerUrl = null;
   let installerSize = null;
+  let installerFileName = `bokrah-setup-${version}.exe`;
 
-  if (Array.isArray(releaseData.assets)) {
-    // 1. Look for asset specifically matching bokrah-retailer-setup
-    let exeAsset = releaseData.assets.find(a => {
-      const name = (a.name || '').toLowerCase();
-      return name.includes('bokrah-retailer-setup') && name.endsWith('.exe');
-    });
-
-    // 2. Or any retailer setup .exe
-    if (!exeAsset) {
-      exeAsset = releaseData.assets.find(a => {
-        const name = (a.name || '').toLowerCase();
-        return (name.includes('setup') || name.includes('retail')) && name.endsWith('.exe');
-      });
-    }
-
-    // 3. Fallback to any .exe asset
-    if (!exeAsset) {
-      exeAsset = releaseData.assets.find(a => (a.name || '').toLowerCase().endsWith('.exe'));
-    }
-
-    if (exeAsset) {
-      installerUrl = exeAsset.browser_download_url;
-      if (exeAsset.size) {
-        installerSize = (exeAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
-      }
+  const exeAsset = findWindowsInstallerAsset(releaseData.assets);
+  if (exeAsset) {
+    installerUrl = exeAsset.browser_download_url;
+    installerFileName = exeAsset.name || installerFileName;
+    if (exeAsset.size) {
+      installerSize = formatFileSize(exeAsset.size);
     }
   }
 
-  // Fallback to the standardized binary naming format if asset list was empty
+  // Fallback direct URL if asset array was empty
   if (!installerUrl) {
-    installerUrl = `https://github.com/Mahfoud-Sa/bokrah/releases/download/${version}/bokrah-retailer-setup-${version}.exe`;
+    installerUrl = `https://github.com/${PRIMARY_REPO}/releases/download/${version}/${installerFileName}`;
   }
 
-  // Update DOM elements
+  // Update DOM elements on index.html
   document.querySelectorAll('[data-release-version]').forEach(el => {
     el.textContent = version;
   });
@@ -137,11 +172,15 @@ async function fetchLatestGithubRelease() {
     });
   }
 
-  // Dynamic button label updating
-  const btnLabel = document.querySelector('[data-download-btn-label]');
-  if (btnLabel) {
-    btnLabel.textContent = `Download bokrah-retailer-setup-${version}.exe`;
-  }
+  const btnLabels = document.querySelectorAll('[data-download-btn-label]');
+  btnLabels.forEach(btn => {
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    if (lang === 'ar') {
+      btn.textContent = `تحميل برنامج التثبيت (${installerFileName})`;
+    } else {
+      btn.textContent = `Download ${installerFileName}`;
+    }
+  });
 
   if (installerSize) {
     document.querySelectorAll('[data-release-size]').forEach(el => {
@@ -152,6 +191,158 @@ async function fetchLatestGithubRelease() {
   document.querySelectorAll('[data-release-notes]').forEach(el => {
     el.setAttribute('href', htmlUrl);
   });
+}
+
+// GitHub Releases Fetching for Dedicated Releases Page (All Versions)
+async function fetchAllGithubReleases() {
+  const container = document.getElementById('releasesList');
+  if (!container) return;
+
+  const loadingEl = document.getElementById('releasesLoading');
+  const errorEl = document.getElementById('releasesError');
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${PRIMARY_REPO}/releases`, {
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    if (!res.ok) {
+      throw new Error(`GitHub API responded with status ${res.status}`);
+    }
+
+    const releases = await res.json();
+    if (!Array.isArray(releases) || releases.length === 0) {
+      throw new Error('No releases found');
+    }
+
+    // Filter out draft releases
+    const publicReleases = releases.filter(r => !r.draft);
+
+    if (loadingEl) loadingEl.style.display = 'none';
+    if (errorEl) errorEl.style.display = 'none';
+
+    renderReleases(publicReleases, container);
+  } catch (err) {
+    console.warn('Could not load dynamic releases from GitHub API, preserving fallback list:', err);
+    if (loadingEl) loadingEl.style.display = 'none';
+    if (errorEl) {
+      errorEl.style.display = 'block';
+    }
+  }
+}
+
+// Render release cards in the Releases list
+function renderReleases(releases, container) {
+  const lang = document.documentElement.getAttribute('lang') || 'en';
+  const isAr = lang === 'ar';
+
+  container.innerHTML = '';
+
+  releases.forEach((release, index) => {
+    const isLatest = index === 0;
+    const version = release.tag_name || release.name || 'Release';
+    const releaseName = release.name || release.tag_name || version;
+    const publishedDate = formatReleaseDate(release.published_at || release.created_at, lang);
+    const htmlUrl = release.html_url;
+
+    // Find main installer (.exe)
+    const exeAsset = findWindowsInstallerAsset(release.assets);
+    const exeUrl = exeAsset
+      ? exeAsset.browser_download_url
+      : `https://github.com/${PRIMARY_REPO}/releases/download/${version}/bokrah-setup-${version}.exe`;
+    const exeName = exeAsset ? exeAsset.name : `bokrah-setup-${version}.exe`;
+    const exeSize = exeAsset && exeAsset.size ? formatFileSize(exeAsset.size) : '~13.5 MB';
+
+    // Release Card element
+    const card = document.createElement('article');
+    card.className = `release-card ${isLatest ? 'is-latest' : ''}`;
+
+    // Clean body or placeholder
+    const bodyText = (release.body || '').trim() || (isAr ? 'إصدار رسمي مستقر لتطبيق بكرة ريتيل مع تحسينات الأداء ومزامنة نقاط البيع.' : 'Official production release of Bokrah Retail with performance enhancements and offline POS synchronization.');
+
+    card.innerHTML = `
+      <div class="release-card-header">
+        <div class="release-version-group">
+          <span class="release-version-tag">${escapeHtml(version)}</span>
+          ${isLatest ? `<span class="release-badge-latest">${isAr ? 'الأحدث • رائج' : 'Latest Release'}</span>` : ''}
+          ${release.prerelease ? `<span class="release-badge-pre">${isAr ? 'نسخة تجريبية' : 'Pre-release'}</span>` : ''}
+        </div>
+        <div class="release-date">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>${escapeHtml(publishedDate)}</span>
+        </div>
+      </div>
+
+      <div class="release-title-row">
+        <h3>${escapeHtml(releaseName)}</h3>
+      </div>
+
+      <div class="release-notes-box">
+        <p>${escapeHtml(bodyText)}</p>
+      </div>
+
+      <div class="release-downloads-section">
+        <h4 class="download-heading">${isAr ? 'ملفات التحميل المتوفرة:' : 'Download Packages:'}</h4>
+        <div class="release-assets-grid">
+          <a class="btn btn-emerald release-download-btn" href="${exeUrl}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <div class="btn-text-block">
+              <strong>${escapeHtml(exeName)}</strong>
+              <small>${isAr ? 'مثبت ويندوز 64-بت' : 'Windows 64-bit Installer'} • ${exeSize}</small>
+            </div>
+          </a>
+
+          ${release.zipball_url ? `
+            <a class="btn btn-outline release-download-btn" href="${release.zipball_url}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 16 12 12 8 16"></polyline>
+                <line x1="12" y1="12" x2="12" y2="21"></line>
+                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                <polyline points="16 16 12 12 8 16"></polyline>
+              </svg>
+              <div class="btn-text-block">
+                <strong>Source Code (.zip)</strong>
+                <small>${isAr ? 'الكود المصدري' : 'Source Archive'}</small>
+              </div>
+            </a>
+          ` : ''}
+
+          <a class="btn btn-outline release-download-btn" href="${htmlUrl}" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <div class="btn-text-block">
+              <strong>${isAr ? 'عرض في GitHub' : 'View on GitHub'}</strong>
+              <small>${isAr ? 'ملاحظات الإصدار والتغييرات' : 'Changelog & Commits'}</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 // Bilingual Language Switcher (EN <-> AR)
@@ -186,5 +377,9 @@ function setLanguage(lang) {
       el.textContent = text;
     }
   });
-}
 
+  // Re-render releases list if present so language updates instantly
+  if (document.getElementById('releasesList')) {
+    fetchAllGithubReleases();
+  }
+}
