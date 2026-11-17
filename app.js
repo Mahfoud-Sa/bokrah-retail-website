@@ -141,7 +141,6 @@ async function fetchLatestGithubRelease() {
   if (!releaseData) return;
 
   const version = releaseData.tag_name || 'v3.5.1';
-  const htmlUrl = releaseData.html_url || `https://github.com/${PRIMARY_REPO}/releases`;
   
   let installerUrl = null;
   let installerSize = null;
@@ -187,10 +186,6 @@ async function fetchLatestGithubRelease() {
       el.textContent = installerSize;
     });
   }
-
-  document.querySelectorAll('[data-release-notes]').forEach(el => {
-    el.setAttribute('href', htmlUrl);
-  });
 }
 
 // GitHub Releases Fetching for Dedicated Releases Page (All Versions)
@@ -243,7 +238,6 @@ function renderReleases(releases, container) {
     const version = release.tag_name || release.name || 'Release';
     const releaseName = release.name || release.tag_name || version;
     const publishedDate = formatReleaseDate(release.published_at || release.created_at, lang);
-    const htmlUrl = release.html_url;
 
     // Find main installer (.exe)
     const exeAsset = findWindowsInstallerAsset(release.assets);
@@ -298,33 +292,6 @@ function renderReleases(releases, container) {
             <div class="btn-text-block">
               <strong>${escapeHtml(exeName)}</strong>
               <small>${isAr ? 'مثبت ويندوز 64-بت' : 'Windows 64-bit Installer'} • ${exeSize}</small>
-            </div>
-          </a>
-
-          ${release.zipball_url ? `
-            <a class="btn btn-outline release-download-btn" href="${release.zipball_url}">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="16 16 12 12 8 16"></polyline>
-                <line x1="12" y1="12" x2="12" y2="21"></line>
-                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
-                <polyline points="16 16 12 12 8 16"></polyline>
-              </svg>
-              <div class="btn-text-block">
-                <strong>Source Code (.zip)</strong>
-                <small>${isAr ? 'الكود المصدري' : 'Source Archive'}</small>
-              </div>
-            </a>
-          ` : ''}
-
-          <a class="btn btn-outline release-download-btn" href="${htmlUrl}" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            <div class="btn-text-block">
-              <strong>${isAr ? 'عرض في GitHub' : 'View on GitHub'}</strong>
-              <small>${isAr ? 'ملاحظات الإصدار والتغييرات' : 'Changelog & Commits'}</small>
             </div>
           </a>
         </div>
